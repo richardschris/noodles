@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crossing the Bridge Noodles — Noodle Notes</title>
+  <link rel="stylesheet" href="/theme/style.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="site-title">Noodle Notes</a>
+  </header>
+<article>
+  <div class="slideshow">
+    <img class="slide active"
+         src="/images/yunnan-rice-noodle-house-1/full soup.jpg"
+         alt="Crossing the Bridge Noodles">
+    <img class="slide"
+         src="/images/yunnan-rice-noodle-house-1/Ingredients.jpg"
+         alt="Crossing the Bridge Noodles">
+    <img class="slide"
+         src="/images/yunnan-rice-noodle-house-1/empty bowl.jpg"
+         alt="Crossing the Bridge Noodles">
+    <button class="slide-prev" onclick="moveSlide(-1)">&#8249;</button>
+    <button class="slide-next" onclick="moveSlide(1)">&#8250;</button>
+    <div class="slide-dots">
+      <button class="dot active" onclick="goToSlide(0)"></button>
+      <button class="dot" onclick="goToSlide(1)"></button>
+      <button class="dot" onclick="goToSlide(2)"></button>
+    </div>
+  </div>
+  <div class="article-container">
+    <a href="/" class="back-link">← All reviews</a>
+    <h1>Crossing the Bridge Noodles</h1>
+    <div class="review-meta">
+      <span class="rating">7/10</span>
+<span>$30 after tip</span><a class="location-link" href="https://www.google.com/maps/search/?api=1&query=53+Bayard+St%2C+New+York" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>53 Bayard St, New York</a><span>May 2, 2026</span>      <span class="badge">Rice Noodle</span>
+    </div>
+    <div class="review-body">
+      <p>Crossing the bridge noodles, I feel, are not common enough in NYC, for how tasty they are. Generally relatively light, with the sorts of flavors you might expect in southeast Asian cuisine (which makes sense since Yunnan borders Myanmar, Laos, and Vietnam). I've had Yunnan Rice Noodle House a few times, and this is the first time I got the pork and fish balls, and the curry and coconut broth. You're given a bunch of ingredients that you add yourself to the bowl of broth, which here is in a boiling hot clay or stone bowl, so it stays very hot. The curry coconut broth is pretty subtle; it is good, but I think the other broths (especially the original) are a bit better. The pork and fish balls leave a lot to be desired. I've had much better ones, so I'd add a different meat. When you add the noodles they slowly will become softer, which is fine, but rice noodles are already soft, so by the end they're less chewy that I'd like. Still, a very solid noodle stop.</p>
+<p>Ordered with pan fried dumplings.</p>
+    </div>
+  </div>
+</article>
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  function moveSlide(dir) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (cur + dir + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  function goToSlide(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+</script>
+  <footer>
+    <p>Noodles.</p>
+  </footer>
+</body>
+</html>
