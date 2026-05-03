@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ SITENAME }}{% endblock %}
+{% block content %}
+<main class="container">
+  {% if articles %}
+  <div class="card-grid">
+    {% for article in articles %}
+    {% set images_str = article.images | default('') | string | replace('"', '') %}
+    {% set image_list = images_str.split(',') | map('trim') | reject('equalto', '') | list %}
+    <a href="{{ SITEURL }}/{{ article.slug }}/" class="card">
+      {% if image_list %}
+      <img src="{{ SITEURL }}/images/{{ article.slug }}/{{ image_list[0] }}" alt="{{ article.title }}">
+      {% else %}
+      <div class="card-no-image"></div>
+      {% endif %}
+      <div class="card-body">
+        <span class="badge">{{ article.noodle_type }}</span>
+        <h2>{{ article.title }}</h2>
+        <div class="card-meta">
+          <span class="rating">{{ article.rating }}/10</span>
+          {% if article.price %}<span>{{ article.price }}</span>{% endif %}
+          <span>{{ article.location }}</span>
+          {% if article.date %}<span>{{ article.date | date_fmt('short') }}</span>{% endif %}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">No reviews yet.</p>
+  {% endif %}
+</main>
+{% endblock %}

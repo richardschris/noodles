@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/style.css">
+</head>
+<body>
+  <header>
+    <a href="{{ SITEURL }}/" class="site-title">{{ SITENAME }}</a>
+  </header>
+  {% block content %}{% endblock %}
+  <footer>
+    <p>Noodles.</p>
+  </footer>
+</body>
+</html>

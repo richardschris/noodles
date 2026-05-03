@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
+{% block content %}
+{% set images_str = article.images | default('') | string | replace('"', '') %}
+{% set image_list = images_str.split(',') | map('trim') | reject('equalto', '') | list %}
+<article>
+  {% if image_list %}
+  <div class="slideshow">
+    {% for img in image_list %}
+    <img class="slide{% if loop.first %} active{% endif %}"
+         src="{{ SITEURL }}/images/{{ article.slug }}/{{ img }}"
+         alt="{{ article.title }}">
+    {% endfor %}
+    {% if image_list | length > 1 %}
+    <button class="slide-prev" onclick="moveSlide(-1)">&#8249;</button>
+    <button class="slide-next" onclick="moveSlide(1)">&#8250;</button>
+    <div class="slide-dots">
+      {% for img in image_list %}
+      <button class="dot{% if loop.first %} active{% endif %}" onclick="goToSlide({{ loop.index0 }})"></button>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="article-container">
+    <a href="{{ SITEURL }}/" class="back-link">← All reviews</a>
+    <h1>{{ article.title }}</h1>
+    <div class="review-meta">
+      <span class="rating">{{ article.rating }}/10</span>
+      {% if article.price %}<span>{{ article.price }}</span>{% endif %}
+      {% if article.location %}<a class="location-link" href="{{ article.location | maps_url }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>{{ article.location }}</a>{% endif %}
+      {% if article.date %}<span>{{ article.date | date_fmt }}</span>{% endif %}
+      <span class="badge">{{ article.noodle_type }}</span>
+    </div>
+    <div class="review-body">
+      {{ article.content }}
+    </div>
+  </div>
+</article>
+{% if image_list | length > 1 %}
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  function moveSlide(dir) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (cur + dir + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  function goToSlide(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+</script>
+{% endif %}
+{% endblock %}
