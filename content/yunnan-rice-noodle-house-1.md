@@ -1,6 +1,6 @@
 Title: Crossing the Bridge Noodles
 Date: 2026-05-02
-Rating: 7
+Rating: 6
 Price: $30 after tip
 Restaurant: Yunnan Rice Noodle House
 Location: 53 Bayard St, New York

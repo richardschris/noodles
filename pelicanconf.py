@@ -2,7 +2,7 @@ import sys
 from urllib.parse import quote_plus as _quote_plus
 
 AUTHOR = 'Chris Richards'
-SITENAME = 'Noodle Notes'
+SITENAME = 'Noodlecentric'
 SITEURL = ''
 
 PATH = 'content'
@@ -16,6 +16,8 @@ THEME = 'theme'
 
 ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
 
 STATIC_PATHS = ['images', 'extra']
 EXTRA_PATH_METADATA = {
