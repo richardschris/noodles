@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cold Skin Noodles — Noodlecentric</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+  <link rel="stylesheet" href="/theme/style.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="site-title">Noodlecentric</a>
+  </header>
+<article>
+  <div class="slideshow">
+    <img class="slide active"
+         src="/images/liang-pi-wan-1/noodles.png"
+         alt="Cold Skin Noodles">
+    <img class="slide"
+         src="/images/liang-pi-wan-1/menu.png"
+         alt="Cold Skin Noodles">
+    <button class="slide-prev" onclick="moveSlide(-1)">&#8249;</button>
+    <button class="slide-next" onclick="moveSlide(1)">&#8250;</button>
+    <div class="slide-dots">
+      <button class="dot active" onclick="goToSlide(0)"></button>
+      <button class="dot" onclick="goToSlide(1)"></button>
+    </div>
+  </div>
+  <div class="article-container">
+    <a href="/" class="back-link">← All reviews</a>
+    <h1>Cold Skin Noodles</h1>
+<p class="restaurant">Liang Pi Wang</p>    <div class="review-meta">
+      <span class="rating">7/10</span>
+<span>$14</span><a class="location-link" href="https://www.google.com/maps/search/?api=1&query=133-35%2C+Roosevelt+Avenue%2C+Flushing%2C+NY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>133-35, Roosevelt Avenue, Flushing, NY</a><span>August 26, 2026</span>      <span class="badge">Cold Skin</span>
+    </div>
+    <div class="review-body">
+      <p>Liang pi are wheat starch noodles, sometimes called "cold skin", and is made by washing a dough and saving the starch. It's then sliced and steamed. The remainder of the dough is the wheat gluten (seitan), which is also cooked and included in the dish. The noodles have an extra slippery texture, relatively light and not too bouncy. The sauce is a mix of chili oil and sesame, and here it's not particularly spicy (they warned me it was, it was not very spicy). It's done elsewhere in the city (Xi'an Famous Foods is the most...famous...place in the city that serves it), but I think it's done pretty well here. The gluten is chewy and soaks up the sauce, and I also got a pork burger to go along with it for dinner. THe plate works perfectly as a lunch or light dinner on its own, or get a burger and make it a meal. There are other drink options in the food hall.</p>
+    </div>
+  </div>
+</article>
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  function moveSlide(dir) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (cur + dir + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  function goToSlide(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+</script>
+  <footer>
+    <p><a href="/about/">Noodles.</a></p>
+  </footer>
+</body>
+</html>
